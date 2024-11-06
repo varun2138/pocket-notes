@@ -4,8 +4,10 @@ import styles from "./styles/Notes.module.css";
 import Arrow from "../assets/arrow.png";
 import Arrow_Disabled from "../assets/arrow_disabled.png";
 import { formatDate, formatTime, GroupName } from "../data/date.js";
+import { useGroupContext } from "../context/GroupContext.jsx";
 
-const Notes = ({ groups, setGroups, setMobileView }) => {
+const Notes = () => {
+  const { groups, setGroups, setMobileView } = useGroupContext();
   const { groupId } = useParams();
   const group = groups.find((gr) => gr.id === parseInt(groupId));
   const [notesContent, setNotesContent] = useState("");

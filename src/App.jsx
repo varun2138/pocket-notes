@@ -4,20 +4,16 @@ import Notes from "./components/Notes";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import styles from "./App.module.css";
+import { useGroupContext } from "./context/GroupContext";
 const App = () => {
-  const [groups, setGroups] = useState([]);
-  const [mobileView, setMobileView] = useState(false);
+  const { mobileView } = useGroupContext();
 
   return (
     <div className={styles.container}>
       <div
         className={`${styles.sidebar} ${mobileView ? styles.hideGroups : ""}`}
       >
-        <GroupsList
-          groups={groups}
-          setGroups={setGroups}
-          setMobileView={setMobileView}
-        />
+        <GroupsList />
       </div>
       <div
         className={`${styles.content} ${!mobileView ? styles.hideNotes : ""}`}
@@ -31,16 +27,7 @@ const App = () => {
               </div>
             }
           />
-          <Route
-            path="/group/notes/:groupId"
-            element={
-              <Notes
-                groups={groups}
-                setGroups={setGroups}
-                setMobileView={setMobileView}
-              />
-            }
-          />
+          <Route path="/group/notes/:groupId" element={<Notes />} />
         </Routes>
       </div>
     </div>

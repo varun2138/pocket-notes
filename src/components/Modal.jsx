@@ -1,23 +1,27 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles/Modal.module.css";
-const Modal = ({
-  isOpen,
-  onClose,
-  groupName,
-  setGroupName,
-  colorSelected,
-  setColorSelected,
-  addGroup,
-  colors,
-}) => {
+import { useGroupContext } from "../context/GroupContext";
+
+const Modal = () => {
+  const {
+    isModalOpen,
+    closeModal,
+    groupName,
+    setGroupName,
+    colorSelected,
+    setColorSelected,
+    addGroup,
+    colors,
+  } = useGroupContext();
   const ref = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {
-        onClose();
+        closeModal();
       }
     };
-    if (isOpen) {
+    if (isModalOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -25,9 +29,9 @@ const Modal = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, onClose]);
+  }, [isModalOpen, closeModal]);
 
-  if (!isOpen) return null;
+  if (!isModalOpen) return null;
   return (
     <div className={styles.modal}>
       <div className={styles.modal_box} ref={ref}>
