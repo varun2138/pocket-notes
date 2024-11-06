@@ -1,23 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import GroupsList from "./components/GroupsList";
 import Notes from "./components/Notes";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import styles from "./App.module.css";
 const App = () => {
   const [groups, setGroups] = useState([]);
+  const [mobileView, setMobileView] = useState(false);
 
   return (
     <div className={styles.container}>
-      <div className={styles.sidebar}>
-        <GroupsList groups={groups} setGroups={setGroups} />
+      <div
+        className={`${styles.sidebar} ${mobileView ? styles.hideGroups : ""}`}
+      >
+        <GroupsList
+          groups={groups}
+          setGroups={setGroups}
+          setMobileView={setMobileView}
+        />
       </div>
-      <div className={styles.content}>
+      <div
+        className={`${styles.content} ${!mobileView ? styles.hideNotes : ""}`}
+      >
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <div className={`${styles.home} ${styles.hideHome}`}>
+                <Home />
+              </div>
+            }
+          />
           <Route
             path="/group/notes/:groupId"
-            element={<Notes groups={groups} setGroups={setGroups} />}
+            element={
+              <Notes
+                groups={groups}
+                setGroups={setGroups}
+                setMobileView={setMobileView}
+              />
+            }
           />
         </Routes>
       </div>

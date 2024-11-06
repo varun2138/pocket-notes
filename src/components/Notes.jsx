@@ -1,31 +1,15 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./styles/Notes.module.css";
 import Arrow from "../assets/arrow.png";
 import Arrow_Disabled from "../assets/arrow_disabled.png";
-const Notes = ({ groups, setGroups }) => {
+import { formatDate, formatTime, GroupName } from "../data/date.js";
+
+const Notes = ({ groups, setGroups, setMobileView }) => {
   const { groupId } = useParams();
   const group = groups.find((gr) => gr.id === parseInt(groupId));
   const [notesContent, setNotesContent] = useState("");
-
-  const formatDate = (date) => {
-    const options = {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    };
-    return new Intl.DateTimeFormat("en-GB", options)
-      .format(date)
-      .replace(/,/g, "");
-  };
-  const formatTime = (time) => {
-    const options = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    };
-    return new Intl.DateTimeFormat("en-US", options).format(time);
-  };
+  const navigate = useNavigate();
 
   const addNote = (e) => {
     e.preventDefault();
@@ -52,15 +36,18 @@ const Notes = ({ groups, setGroups }) => {
       addNote(e);
     }
   };
+  const handleMobileView = () => {
+    setMobileView(false);
+    navigate("/");
+  };
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
+        <p onClick={handleMobileView} className={styles.back}>
+          back
+        </p>
         <p className={styles.logo} style={{ backgroundColor: group?.color }}>
-          {group.name
-            .split(" ")
-            .map((word) => word.charAt(0))
-            .join("")
-            .slice(0, 2)}
+          <GroupName group={group} />
         </p>
 
         <h1 className={styles.name}>{group?.name}</h1>
