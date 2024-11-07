@@ -60,9 +60,9 @@
   color: black;
 }
 .button {
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
-  right: 3rem;
+  left: 14rem;
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 100%;
@@ -75,4 +75,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .button {
+    left: 18rem;
+  }
 }
