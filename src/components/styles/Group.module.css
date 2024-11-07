@@ -82,7 +82,7 @@
     left: 16rem;
   }
 }
-@media (min-width: 1260px) and (max-width: 1440px) {
+@media (min-width: 1300px) and (max-width: 1440px) {
   .button {
     left: 18rem;
   }
