@@ -62,7 +62,7 @@
 .button {
   position: fixed;
   bottom: 1rem;
-  left: 14rem;
+  left: 12rem;
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 100%;
@@ -79,6 +79,6 @@
 
 @media (max-width: 768px) {
   .button {
-    left: 18rem;
+    left: 16rem;
   }
 }
