@@ -60,15 +60,18 @@ export const GroupProvider = ({ children }) => {
     navigate(`/group/notes/${newGroup.id}`);
   };
 
+  // storing the groups using local storage
   useEffect(() => {
     localStorage.setItem("groups", JSON.stringify(groups));
   }, [groups]);
 
+  //navigating to "/" when refreshed
   useEffect(() => {
     if (!selectedId) {
       navigate("/");
     }
   }, [selectedId, navigate]);
+
   const value = {
     groups,
     setGroups,

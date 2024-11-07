@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./styles/Notes.module.css";
 import Arrow from "../assets/arrow.png";
 import Arrow_Disabled from "../assets/arrow_disabled.png";
+import Back_Arrow from "../assets/back_arrow.png";
 import { formatDate, formatTime, GroupName } from "../data/date.js";
 import { useGroupContext } from "../context/GroupContext.jsx";
 
@@ -46,7 +47,7 @@ const Notes = () => {
     <div className={styles.container}>
       <div className={styles.heading}>
         <p onClick={handleMobileView} className={styles.back}>
-          back
+          <img src={Back_Arrow} alt="back" />
         </p>
         <p className={styles.logo} style={{ backgroundColor: group?.color }}>
           <GroupName group={group} />
@@ -76,7 +77,7 @@ const Notes = () => {
             className={styles.Input}
             rows={4}
             cols={30}
-            placeholder="add your text here..."
+            placeholder="Enter your text here..."
             value={notesContent}
             onChange={(e) => setNotesContent(e.target.value)}
             onKeyDown={handleSubmit}

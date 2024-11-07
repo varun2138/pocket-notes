@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/Group.module.css";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
-import { GroupName } from "../data/date";
+import { GroupName, truncateGroupName } from "../data/date";
 import { useGroupContext } from "../context/GroupContext";
 const GroupsList = () => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const GroupsList = () => {
             <p className={styles.logo} style={{ backgroundColor: group.color }}>
               <GroupName group={group} />
             </p>
-            <p className={styles.name}>{group.name}</p>
+            <p className={styles.name}>{truncateGroupName(group.name)}</p>
           </div>
         ))}
       </div>

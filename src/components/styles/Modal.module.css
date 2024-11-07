@@ -83,4 +83,22 @@
   background-color: #16008b;
   border: none;
   border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modal_box {
+    width: 20rem;
+  }
+  .name,
+  .color_name {
+    font-size: 0.9rem;
+  }
+  .Input {
+    width: 60%;
+  }
+  .colorButton {
+    width: 20px;
+    height: 20px;
+  }
 }

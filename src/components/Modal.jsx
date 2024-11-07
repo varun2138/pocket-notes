@@ -35,7 +35,7 @@ const Modal = () => {
   return (
     <div className={styles.modal}>
       <div className={styles.modal_box} ref={ref}>
-        <h3 className={styles.title}>Create new group</h3>
+        <h3 className={styles.title}>Create New group</h3>
         <div className={styles.text}>
           <p className={styles.name}>Group name</p>
           <input
