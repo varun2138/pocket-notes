@@ -37,6 +37,7 @@
   border-radius: 1rem;
   border: 2px solid #cccccc;
   width: 65%;
+  outline: none;
 }
 .Input::placeholder {
   font-weight: 400;
@@ -84,6 +85,8 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  text-transform: capitalize;
+  letter-spacing: 0.05rem;
 }
 
 @media (max-width: 768px) {
@@ -100,5 +103,15 @@
   .colorButton {
     width: 20px;
     height: 20px;
+  }
+  .create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    right: 0;
+  }
+  .create_btn {
+    width: 10rem;
   }
 }

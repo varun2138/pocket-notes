@@ -43,7 +43,7 @@ const Modal = () => {
             type="text"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
-            placeholder="add group name"
+            placeholder="Enter group name"
           />
         </div>
         <div className={styles.color}>
