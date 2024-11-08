@@ -78,6 +78,9 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    align-items: start;
+  }
   .button {
     left: 16rem;
   }
@@ -88,6 +91,9 @@
   }
   .name {
     font-size: 1.2rem;
+  }
+  .heading {
+    margin-left: 3rem;
   }
 }
 @media (min-width: 1300px) and (max-width: 1440px) {
